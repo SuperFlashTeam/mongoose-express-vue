@@ -69,13 +69,6 @@ export const putRequest = (url, params) => {
   })
 }
 
-// export const deleteRequest = (url) => {
-//   return axios({
-//     method: 'delete',
-//     url: `${base}${url}`
-//   })
-// }
-
 export const deleteRequest = (url, params) => {
   console.log(params)
   return axios({
