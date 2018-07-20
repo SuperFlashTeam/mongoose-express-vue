@@ -1,6 +1,6 @@
 <template>
   <div class="ListDialog">
-    <el-dialog title="编辑活动信息" :visible.sync="dialogFormVisible" :close-on-click-modal="false" :close-on-press-escape="false" width="80%">
+    <el-dialog title="编辑活动信息" :visible.sync="dialogFormVisible" :close-on-click-modal="false" :close-on-press-escape="false" :show-close="false" width="80%">
       <el-form :model="form" ref="form" :rules="rules">
         <el-form-item label="名称:" :label-width="formLabelWidth" prop="projectName">
           <el-input v-model="form.projectName" auto-complete="off"></el-input>
@@ -13,7 +13,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="back()">取 消</el-button>
+        <el-button @click="back()">返 回</el-button>
         <el-button type="primary" @click="submitForm('form')">确 定</el-button>
       </div>
     </el-dialog>
