@@ -5,25 +5,18 @@
     </el-row>
     <el-row>
       <el-col v-for="(item, index) in listData" :key="index" :span="11" :offset="1" style="margin-bottom: 20px;">
-        <el-card class="listcard">
-          <div slot="header">
-            <span>{{item.projectName}}</span>
-          </div>
-          <el-row style="margin-bottom: 20px;">
-            姓名: {{item.name}}
-          </el-row>
-          <el-row>
-            <el-col :span="8">
-              <el-button size="mini" type="primary" icon="el-icon-edit" @click="editFn(item)" circle></el-button>
-            </el-col>
-            <el-col :span="8">
-              <a :href="item.url" target="_blank">
-                <el-button size="mini" type="success" icon="el-icon-info" circle></el-button>
-              </a>
-            </el-col>
-            <el-col :span="8">
-              <el-button size="mini" type="danger" icon="el-icon-delete" @click="delopen(item)" circle></el-button>
-            </el-col>
+        <el-card class="listcard" :body-style="{padding: '0px 0px 20px 0px'}">
+          <a :href="item.url" target="_blank">
+            <div>
+              <span class="projectName">{{item.projectName}}</span>
+              <div class="nameBox">
+                姓名: {{item.name}}
+              </div>
+            </div>
+          </a>
+          <el-row type="flex" justify="space-around">
+            <el-button class="fl" size="mini" type="primary" icon="el-icon-edit" @click="editFn(item)" circle></el-button>
+            <el-button size="mini" type="danger" icon="el-icon-delete" @click="delopen(item)" circle></el-button>
           </el-row>
         </el-card>
       </el-col>
@@ -125,6 +118,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+.projectName {
+  display: inline-block;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid #ccc;
+}
+
+.nameBox {
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 10px 0px;
+}
+
 .fl {
   float: left;
 }
@@ -139,5 +147,22 @@ export default {
 .el-message-box--center {
   padding-bottom: 30px;
   width: 50% !important;
+}
+
+a:link {
+  color:#000;
+  text-decoration:none;
+}
+a:visited {
+  color:#000;
+  text-decoration:none;
+}
+a:hover {
+  color:#000;
+  text-decoration:none;
+}
+a:active {
+  color:#000;
+  text-decoration:none;
 }
 </style>
