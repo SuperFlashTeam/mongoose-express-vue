@@ -142,11 +142,10 @@ export default {
 }
 
 .ManagementList {
-}
-
-.el-message-box--center {
-  padding-bottom: 30px;
-  width: 50% !important;
+  .el-message-box--center {
+    padding-bottom: 30px;
+    width: 50% !important;
+  }
 }
 
 a:link {

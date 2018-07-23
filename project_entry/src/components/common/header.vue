@@ -10,6 +10,7 @@
       text-color="#fff"
       active-text-color="#ffd04b">
       <el-menu-item index="ManagementList" route="ManagementList">项目测试地址</el-menu-item>
+      <el-menu-item index="OpList" route="OpList">运营页面地址</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -21,12 +22,19 @@ export default {
       activeIndex: 'ManagementList'
     }
   },
+  watch: {
+    '$route.name': function (val) {
+      this.activeIndex = val
+    }
+  },
   methods: {
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+      this.activeIndex = key
+      this.$router.push({name: key})
     }
   },
   created () {
+    this.activeIndex = this.$route.name
   }
 }
 </script>
