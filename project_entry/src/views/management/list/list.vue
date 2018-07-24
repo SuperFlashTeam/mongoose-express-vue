@@ -1,7 +1,14 @@
 <template>
   <div class="ManagementList">
     <el-row style="margin-bottom: 20px;">
-      <el-button class="fr" size="mini" type="primary" icon="el-icon-plus" @click="addFn" circle></el-button>
+      <el-col :span="15" :offset="5">
+        <el-input placeholder="请输入项目名称或姓名" clearable v-model="queryMsg" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search" @click="queryList(queryMsg)"></el-button>
+        </el-input>
+      </el-col>
+      <el-col :span="2" :offset="2" style="margin-top: 6px;">
+        <el-button size="mini" type="primary" icon="el-icon-plus" @click="addFn" circle></el-button>
+      </el-col>
     </el-row>
     <el-row>
       <el-col v-for="(item, index) in listData" :key="index" :span="11" :offset="1" style="margin-bottom: 20px;">
@@ -43,7 +50,8 @@ export default {
         name: ''
       },
       listDialogStatus: false,
-      formstatus: 'add'
+      formstatus: 'add',
+      queryMsg: ''
     }
   },
   methods: {
@@ -60,6 +68,14 @@ export default {
           type: 'info',
           message: '已取消删除'
         })
+      })
+    },
+    queryList (queryMsg) {
+      this.getRequest('/queryUrlMsg?queryMsg=' + queryMsg).then(res => {
+        if (res && res.status === 200) {
+          console.log(res.data)
+          this.listData = res.data
+        }
       })
     },
     getList () {

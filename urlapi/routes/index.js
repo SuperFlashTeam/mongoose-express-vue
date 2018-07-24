@@ -4,6 +4,26 @@ const opUrlMsgModel = require('../modules/opurlapi')
 
 const routes = (app) => {
   // 统一入口api
+  // 模糊查询
+  app.get('/queryUrlMsg', (req, res, next) => {
+    let response = res
+    let queryMsg = req.query.queryMsg
+    const reg = new RegExp(queryMsg, 'i')
+    devMsgModel.find(
+      {
+        $or : [ //多条件，数组
+          {projectName : {$regex : reg}},
+          {name : {$regex : reg}}
+        ]
+      }, 
+      (err, result, res) => {
+      if(err) return response.json({
+        code: 10000, 
+        error: err
+      })
+      response.json(result)
+    })
+  })
   // 查询所有
   app.get('/getUrlMsg', (req, res, next) => {
     let response = res
@@ -73,6 +93,25 @@ const routes = (app) => {
     })
   })
   // 运营网址api==============================
+  // 模糊查询
+  app.get('/queryOpUrlMsg', (req, res, next) => {
+    let response = res
+    let queryMsg = req.query.queryMsg
+    const reg = new RegExp(queryMsg, 'i')
+    opUrlMsgModel.find(
+      {
+        $or : [ //多条件，数组
+          {projectName : {$regex : reg}}
+        ]
+      }, 
+      (err, result, res) => {
+      if(err) return response.json({
+        code: 10000, 
+        error: err
+      })
+      response.json(result)
+    })
+  })
   // 查询所有
   app.get('/getOpUrlMsg', (req, res, next) => {
     let response = res
