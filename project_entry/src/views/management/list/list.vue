@@ -15,7 +15,7 @@
             </div>
           </a>
           <el-row type="flex" justify="space-around">
-            <el-button class="fl" size="mini" type="primary" icon="el-icon-edit" @click="editFn(item)" circle></el-button>
+            <el-button size="mini" type="primary" icon="el-icon-edit" @click="editFn(item)" circle></el-button>
             <el-button size="mini" type="danger" icon="el-icon-delete" @click="delopen(item)" circle></el-button>
           </el-row>
         </el-card>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {Message} from 'element-ui'
 
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.interceptors.request.use(config => {
   return config
 }, err => {
@@ -25,19 +26,13 @@ axios.interceptors.response.use(data => {
 let base = ''
 
 export const postRequest = (url, params) => {
+  console.log(params)
   return axios({
     method: 'post',
     url: `${base}${url}`,
     data: params,
-    transformRequest: [function (data) {
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     }
   })
 }
@@ -56,15 +51,8 @@ export const putRequest = (url, params) => {
     method: 'put',
     url: `${base}${url}`,
     data: params,
-    transformRequest: [function (data) {
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     }
   })
 }
@@ -75,15 +63,8 @@ export const deleteRequest = (url, params) => {
     method: 'delete',
     url: `${base}${url}`,
     data: params,
-    transformRequest: [function (data) {
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     }
   })
 }

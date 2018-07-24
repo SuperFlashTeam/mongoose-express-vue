@@ -17,6 +17,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .el-message {

@@ -6,14 +6,14 @@ const routes = (app) => {
   // 统一入口api
   // 查询所有
   app.get('/getUrlMsg', (req, res, next) => {
-      let response = res
-      devMsgModel.find({}, (err, result, res) => {
-        if(err) return response.json({
-            code: 10000, 
-            error: err
-        })
-        response.json(result)
-      })
+    let response = res
+    devMsgModel.find({}, (err, result, res) => {
+    if(err) return response.json({
+        code: 10000, 
+        error: err
+    })
+    response.json(result)
+    })
   })
   // 新增
   app.post('/postUrlMsg', (req, res, next) => {
@@ -77,11 +77,11 @@ const routes = (app) => {
   app.get('/getOpUrlMsg', (req, res, next) => {
     let response = res
     opUrlMsgModel.find({}, (err, result, res) => {
-      if(err) return response.json({
-          code: 10000, 
-          error: err
-      })
-      response.json(result)
+    if(err) return response.json({
+        code: 10000, 
+        error: err
+    })
+    response.json(result)
     })
   })
   // 新增
@@ -89,8 +89,10 @@ const routes = (app) => {
     let newMsg = [{
         projectName: req.body.projectName,
         devurl: req.body.devurl,
-        masterurl: req.body.masterurl
+        masterurl: req.body.masterurl,
+        flexurlgroup: req.body.flexurlgroup
     }]
+    console.log(req.body.flexurlgroup, 'req.body.flexurlgroup')
     let response = res
     opUrlMsgModel.create(newMsg, (err, result, res) => {
         if(err) return response.json({
@@ -112,7 +114,8 @@ const routes = (app) => {
             $set: {
               projectName: req.body.projectName,
               devurl: req.body.devurl,
-              masterurl: req.body.masterurl
+              masterurl: req.body.masterurl,
+              flexurlgroup: req.body.flexurlgroup
             }
         }
     let response = res

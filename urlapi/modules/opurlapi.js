@@ -13,7 +13,8 @@ db.once('open', (callback) => {
 const opUrlSchema = new mongoose.Schema({
     projectName: String,
     devurl: String,
-    masterurl: String
+    masterurl: String,
+    flexurlgroup: Array
 })
 // 创建model
 const opUrlMsgModel = mongoose.model('newOpUrlMsg', opUrlSchema) // newClass为创建或选中的集合
